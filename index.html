@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOT Solar Tracking System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>☀️ IOT Based Electrical Solar Tracking System</h1>
+        <p>Maximizing Solar Energy Capture with Real-Time Data and Automated Control</p>
+    </header>
+
+    <main>
+        <section id="dashboard" class="card">
+            <h2>📊 Real-Time System Dashboard</h2>
+            <div class="data-grid">
+                <div class="data-item">
+                    <p class="label">Current Angle (Azimuth)</p>
+                    <p class="value" id="currentAzimuth">0.0°</p>
+                </div>
+                <div class="data-item">
+                    <p class="label">Current Angle (Altitude)</p>
+                    <p class="value" id="currentAltitude">0.0°</p>
+                </div>
+                <div class="data-item">
+                    <p class="label">Solar Intensity (LDR)</p>
+                    <p class="value" id="solarIntensity">0</p>
+                </div>
+                <div class="data-item">
+                    <p class="label">Power Output (W)</p>
+                    <p class="value" id="powerOutput">0.0 W</p>
+                </div>
+                <div class="data-item status-box">
+                    <p class="label">Tracking Status</p>
+                    <p class="value" id="trackingStatus">Initializing...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="control-panel" class="card">
+            <h2>⚙️ System Control</h2>
+            <div class="control-actions">
+                <div class="control-group">
+                    <label for="mode-select">Operating Mode:</label>
+                    <select id="mode-select" onchange="updateSystemMode(this.value)">
+                        <option value="auto">Automatic Tracking</option>
+                        <option value="manual">Manual Control</option>
+                    </select>
+                </div>
+                
+                <div class="control-group manual-controls" id="manual-controls">
+                    <p class="label">Manual Adjustments:</p>
+                    <button onclick="sendManualCommand('up')">UP ⬆️</button>
+                    <button onclick="sendManualCommand('down')">DOWN ⬇️</button>
+                    <button onclick="sendManualCommand('left')">LEFT ⬅️</button>
+                    <button onclick="sendManualCommand('right')">RIGHT ➡️</button>
+                </div>
+            </div>
+            <p id="controlMessage" class="message"></p>
+        </section>
+
+        <section id="project-info" class="card">
+            <h2>💡 Project Overview</h2>
+            <p>This system uses Light Dependent Resistors (LDRs) and an IOT Microcontroller (like ESP32/Arduino) to continuously adjust the position of a solar panel. The goal is to keep the panel perpendicular to the sun's rays for maximum energy generation.</p>
+            <p>The **Automatic Tracking Mode** uses a feedback loop to find the position of highest solar intensity. The **Manual Control Mode** allows remote calibration.</p>
+            
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 IOT Solar Tracking Project | Designed for Monitoring & Control</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
